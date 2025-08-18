@@ -16,12 +16,9 @@ import CustomerForm from "./pages/customers/CustomerForm";
 import CustomerList from "./pages/customers/CustomerList";
 import TypeTaxList from "./pages/MasterData/TypeTax/TypeTaxList";
 import PemasokList from "./pages/MstPemasok/PemasokList";
-
-
-
-
-
-
+import BarangdanjasaList from "./pages/BarangDanJasa/BarangdanjasaList";
+import ListProjectMst from "./pages/Proyek/ListProjectMst";
+import DepartmentList from './pages/Department/DepartmentList';
 
 
 
@@ -151,7 +148,30 @@ function App() {
               </ProtectedRoute>
             }
           />
-
+          <Route
+            path="/barang-jasa"
+            element={
+              <ProtectedRoute>
+                <BarangdanjasaList />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/master/project"
+            element={
+              <ProtectedRoute>
+                <ListProjectMst />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/master/depart"
+            element={
+              <ProtectedRoute>
+                <DepartmentList/>
+              </ProtectedRoute>
+            }
+          />
           {/* Default routes */}
           <Route path="/" element={<Navigate to="/login" />} />
           <Route path="*" element={<Navigate to="/login" />} />

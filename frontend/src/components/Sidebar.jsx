@@ -51,6 +51,9 @@ const Sidebar = () => {
         '/accounting/chart-of-accounts',
         '/customers',
         '/master/pemasok',
+        '/barang-jasa',
+        '/master/project',
+        '/master/depart',
       ],
     },
     {
@@ -213,6 +216,42 @@ const Sidebar = () => {
                   style={{ fontSize: '1.2rem' }}
                 ></i>
                 <div className="menu-card-title">Daftar Pemasok</div>
+              </Link>
+              <Link
+                to="/barang-jasa"
+                className={`menu-card ${
+                  location.pathname === '/barang-jasa' ? 'active-submenu' : ''
+                }`}
+              >
+                <i
+                  className="bi bi-gear"
+                  style={{ fontSize: '1.2rem' }}
+                ></i>
+                <div className="menu-card-title">Barang dan Jasa</div>
+              </Link>
+              <Link
+                to="/master/project"
+                className={`menu-card ${
+                  location.pathname === '/master/project' ? 'active-submenu' : ''
+                }`}
+              >
+                <i
+                  className="bi bi-clipboard-data"
+                  style={{ fontSize: '1.2rem' }}
+                ></i>
+                <div className="menu-card-title">Proyek</div>
+              </Link>
+              <Link
+                to="/master/depart"
+                className={`menu-card ${
+                  location.pathname === '/master/depart' ? 'active-submenu' : ''
+                }`}
+              >
+                <i
+                  className="bi bi-clipboard-data"
+                  style={{ fontSize: '1.2rem' }}
+                ></i>
+                <div className="menu-card-title">Department</div>
               </Link>
             </div>
           </div>

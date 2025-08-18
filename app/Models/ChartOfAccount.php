@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class ChartOfAccount extends Model
 {
     use HasFactory;
+    
+    protected $table = 'chart_of_accounts';
 
     protected $fillable = [
         'nama',
