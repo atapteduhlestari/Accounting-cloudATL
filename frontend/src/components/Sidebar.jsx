@@ -4,10 +4,16 @@ import { Link, useLocation } from 'react-router-dom';
 
 const Sidebar = () => {
   const [activeSubmenu, setActiveSubmenu] = useState(null);
+  const [activeThirdLevel, setActiveThirdLevel] = useState(null);
   const location = useLocation();
 
   const toggleSubmenu = (id) => {
     setActiveSubmenu((prev) => (prev === id ? null : id));
+    setActiveThirdLevel(null); // Reset third level when changing main submenu
+  };
+
+  const toggleThirdLevel = (id) => {
+    setActiveThirdLevel((prev) => (prev === id ? null : id));
   };
 
   const sidebarMenu = [
@@ -38,6 +44,7 @@ const Sidebar = () => {
         '/master/PaymentTermForm',
         '/master/MstTax',
         '/master/type-tax',
+        '/master/MetodePenyusutanPajak',
       ],
     },
     {
@@ -55,6 +62,18 @@ const Sidebar = () => {
         '/master/project',
         '/master/depart',
       ],
+      thirdLevel: {
+        'aktiva-tetap': {
+          label: 'Aktiva Tetap',
+          icon: 'bi-building-gear',
+          children: [
+            { path: '/tipe-aktiva-tetap-pajak', label: 'Tipe Aktiva Tetap Pajak', icon: 'bi-receipt' }, 
+            { path: '/essential/aktiva-tetap/tipe-aktiva', label: 'Tipe Aktiva Tetap', icon: 'bi-gear' },
+            { path: '/essential/aktiva-tetap/daftar-aktiva', label: 'Daftar Aktiva Tetap', icon: 'bi-list-check' },
+          ]
+        }
+      }
+
     },
     {
       label: 'Entry',
@@ -77,7 +96,6 @@ const Sidebar = () => {
       submenu: false,
     },
   ];
-  
 
   return (
     <>
@@ -87,7 +105,10 @@ const Sidebar = () => {
             <div
               key={menu.label}
               className={`sidebar-icon ${
-                menu.children?.includes(location.pathname) ? 'active' : ''
+                menu.children?.includes(location.pathname) || 
+                (menu.thirdLevel && Object.values(menu.thirdLevel).some(level => 
+                  level.children.some(child => child.path === location.pathname)
+                )) ? 'active' : ''
               }`}
               onClick={() => toggleSubmenu(menu.id)}
               title={menu.label}
@@ -253,8 +274,48 @@ const Sidebar = () => {
                 ></i>
                 <div className="menu-card-title">Department</div>
               </Link>
+              
+              {/* Aktiva Tetap Card with Third Level */}
+              <div 
+                className={`menu-card ${activeThirdLevel === 'aktiva-tetap' ? 'active-submenu' : ''}`}
+                onClick={() => toggleThirdLevel('aktiva-tetap')}
+                style={{ cursor: 'pointer' }}
+              >
+                <i className="bi bi-building-gear" style={{ fontSize: '1.2rem' }}></i>
+                <div className="menu-card-title">Aktiva Tetap</div>
+                <i className={`bi ${activeThirdLevel === 'aktiva-tetap' ? 'bi-chevron-left' : 'bi-chevron-right'} third-level-indicator`}></i>
+              </div>
             </div>
           </div>
+
+          {/* Third Level Menu: Aktiva Tetap */}
+          {activeThirdLevel === 'aktiva-tetap' && (
+            <div className="third-level-menu">
+              <div className="third-level-header">
+                <button className="back-button" onClick={() => setActiveThirdLevel(null)}>
+                  <i className="bi bi-chevron-left"></i> Kembali
+                </button>
+                <h4 className="third-level-title">Aktiva Tetap</h4>
+              </div>
+              <div className="third-level-content">
+                {sidebarMenu
+                  .find(m => m.id === 'essential')
+                  ?.thirdLevel?.['aktiva-tetap']
+                  .children.map((item) => (
+                    <Link
+                      key={item.path}
+                      to={item.path}
+                      className={`third-level-card ${
+                        location.pathname === item.path ? 'active-submenu' : ''
+                      }`}
+                    >
+                      <i className={`bi ${item.icon}`}></i>
+                      <span>{item.label}</span>
+                    </Link>
+                  ))}
+              </div>
+            </div>
+          )}
         </div>
       )}
 
@@ -378,6 +439,20 @@ const Sidebar = () => {
                 to="/master/type-tax"
                 className={`menu-card ${
                   location.pathname === '/master/type-tax'
+                    ? 'active-submenu'
+                    : ''
+                }`}
+              >
+                <i
+                  className="bi bi-file-earmark-text"
+                  style={{ fontSize: '1.2rem' }}
+                ></i>
+                <div className="menu-card-title">Master Tipe Pajak</div>
+              </Link>
+              <Link
+                to="/master/MetodePenyusutanPajak"
+                className={`menu-card ${
+                  location.pathname === '/master/MetodePenyusutanPajak'
                     ? 'active-submenu'
                     : ''
                 }`}

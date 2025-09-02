@@ -19,6 +19,9 @@ import PemasokList from "./pages/MstPemasok/PemasokList";
 import BarangdanjasaList from "./pages/BarangDanJasa/BarangdanjasaList";
 import ListProjectMst from "./pages/Proyek/ListProjectMst";
 import DepartmentList from './pages/Department/DepartmentList';
+import MetodePenyusutanPajakList from "./pages/MasterData/MetodePenyusutanPajak/MetodePenyusutanPajakList";
+import TipeAktivaTetapPajakList from "./pages/AktivaTetap/TipeAktivaTetapPajak/TipeAktivaTetapPajakList";
+
 
 
 
@@ -169,6 +172,22 @@ function App() {
             element={
               <ProtectedRoute>
                 <DepartmentList/>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/master/MetodePenyusutanPajak"
+            element={
+              <ProtectedRoute>
+                <MetodePenyusutanPajakList/>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/tipe-aktiva-tetap-pajak"
+            element={
+              <ProtectedRoute>
+                <TipeAktivaTetapPajakList />
               </ProtectedRoute>
             }
           />

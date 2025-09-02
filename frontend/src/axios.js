@@ -3,7 +3,7 @@ import axios from 'axios';
 
 // Buat instance axios khusus
 const api = axios.create({
-    baseURL: 'http://192.168.1.29:8000',
+    baseURL: 'http://192.168.1.30:8000',
     withCredentials: true,
 });
 

@@ -19,6 +19,10 @@ use App\Http\Controllers\Api\BarangJasaController;
 use App\Http\Controllers\Api\KategoriBarangController;
 use App\Http\Controllers\Api\MstProjectController;
 use App\Http\Controllers\Api\MstDepartmentController;
+use App\Http\Controllers\Api\MetodePenyusutanPajakController;
+use App\Http\Controllers\Api\MstTipeAktivaTetapPajakController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -46,6 +50,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('barang-jasa', BarangJasaController::class);
     Route::apiResource('projects', MstProjectController::class);
     Route::apiResource('mst-department', MstDepartmentController::class);
+    Route::apiResource('metode-penyusutan-pajak', MetodePenyusutanPajakController::class);
+    Route::apiResource('tipe-aktiva-tetap-pajak', MstTipeAktivaTetapPajakController::class);
     Route::get('/payment_terms', [PaymentTermController::class, 'index']);
     Route::get('/currencies', [CurrencyController::class, 'index']);
     Route::get('/mst_tax', [TaxController::class, 'index']);
@@ -53,6 +59,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/type_taxes', [TypeTaxController::class, 'index']);
     Route::get('chart-of-accounts-barang', [BarangJasaController::class, 'chartOfAccounts']);
     Route::get('kategori-barang', [KategoriBarangController::class, 'index']);
+    Route::get('mst_metode_penyusutan_pajak', [MetodePenyusutanPajakController::class, 'index']);
     Route::get('tipe-akun/{id}', [App\Http\Controllers\Api\ChartOfAccountController::class, 'getTipeAkunDetails']);
 });
 

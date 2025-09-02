@@ -1,4 +1,3 @@
-// src/Auth/AuthContext.jsx
 import { createContext, useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 
@@ -14,7 +13,7 @@ export const AuthProvider = ({ children }) => {
   // Fungsi untuk cek siapa yang login
   const refreshAuth = () => {
     axios
-      .get('http://192.168.1.29:8000/api/user', {
+      .get('http://192.168.1.30:8000/api/user', {
         withCredentials: true,
       })
       .then((res) => {
