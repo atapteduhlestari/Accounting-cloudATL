@@ -21,8 +21,7 @@ import ListProjectMst from "./pages/Proyek/ListProjectMst";
 import DepartmentList from './pages/Department/DepartmentList';
 import MetodePenyusutanPajakList from "./pages/MasterData/MetodePenyusutanPajak/MetodePenyusutanPajakList";
 import TipeAktivaTetapPajakList from "./pages/AktivaTetap/TipeAktivaTetapPajak/TipeAktivaTetapPajakList";
-
-
+import TipeAktivaTetapList from './pages/AktivaTetap/TipeAktivaTetap/TipeAktivaTetapList';
 
 
 function App() {
@@ -188,6 +187,14 @@ function App() {
             element={
               <ProtectedRoute>
                 <TipeAktivaTetapPajakList />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/aktiva-tetap/tipe"
+            element={
+              <ProtectedRoute>
+                <TipeAktivaTetapList />
               </ProtectedRoute>
             }
           />

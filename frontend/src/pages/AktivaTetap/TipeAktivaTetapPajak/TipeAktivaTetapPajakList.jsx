@@ -67,7 +67,7 @@ export default function TipeAktivaTetapPajakList() {
               data.map((item) => (
                 <tr key={item.id} className="border-b">
                   <td className="p-2 border">{item.nama}</td>
-                  <td className="p-2 border">{item.metode?.nama || '-'}</td>
+                  <td className="p-2 border">{item.metode_nama || '-'}</td>
                   <td className="p-2 border text-center">{item.estimasi_umur_pajak} Tahun</td>
                   <td className="p-2 border text-center">{item.tarif_penyusutan_pajak} %</td>
                   <td className="p-2 border text-center">

@@ -68,7 +68,7 @@ const Sidebar = () => {
           icon: 'bi-building-gear',
           children: [
             { path: '/tipe-aktiva-tetap-pajak', label: 'Tipe Aktiva Tetap Pajak', icon: 'bi-receipt' }, 
-            { path: '/essential/aktiva-tetap/tipe-aktiva', label: 'Tipe Aktiva Tetap', icon: 'bi-gear' },
+            { path: '/aktiva-tetap/tipe', label: 'Tipe Aktiva Tetap', icon: 'bi-gear' },
             { path: '/essential/aktiva-tetap/daftar-aktiva', label: 'Daftar Aktiva Tetap', icon: 'bi-list-check' },
           ]
         }

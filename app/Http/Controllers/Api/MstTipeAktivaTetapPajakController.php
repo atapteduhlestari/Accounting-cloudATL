@@ -10,8 +10,20 @@ class MstTipeAktivaTetapPajakController extends Controller
 {
     public function index()
     {
-        return MstTipeAktivaTetapPajak::with('metode')->get();
+        $rows = MstTipeAktivaTetapPajak::with('metode:id,nama')->get();
+
+        return $rows->map(function ($r) {
+            return [
+                'id' => $r->id,
+                'nama' => $r->nama,
+                'metode_id' => $r->metode_id,
+                'metode_nama' => optional($r->metode)->nama, // ⬅️ flatten biar gampang
+                'estimasi_umur_pajak' => $r->estimasi_umur_pajak,
+                'tarif_penyusutan_pajak' => $r->tarif_penyusutan_pajak,
+            ];
+        });
     }
+
 
     public function store(Request $request)
     {
